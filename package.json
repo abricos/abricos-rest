@@ -1,0 +1,44 @@
+{
+  "name": "abricos-rest",
+  "description": "Abricos REST API",
+  "version": "0.1.0",
+  "main": "index.js",
+  "homepage": "https://github.com/abricos/abricos-rest",
+  "author": {
+    "name": "Alexander Kuzmin",
+    "email": "roosit@abricos.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/abricos/abricos-rest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abricos/abricos-rest/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/abricos/abricos-rest/blob/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp test"
+  },
+  "engines": {
+    "node": ">= 0.10.34"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "abricos",
+    "api",
+    "rest"
+  ],
+  "dependencies": {
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0",
+    "request": "^2.51.0",
+    "should": "^4.4.4",
+    "tree-config": "^0.1.0"
+  }
+}
