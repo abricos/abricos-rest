@@ -9,19 +9,19 @@ describe('Abricos.API Module Network Functions:', function () {
       this.timeout(40000);
 
       var api = new Abricos.API();
-      var data = {
-        do: 'userCurrent'
-      };
 
-      api.post('user', data, function (err, response) {
+      api.should.be.an.instanceOf(Object);
+
+      var userModule = api.getModule('user');
+
+      userModule.userCurrent(function (err, userCurrnet) {
         should.not.exist(err);
 
-        should.exist(response);
-
-        // response.should.be.an.instanceOf(Object);
+        should.exist(userCurrnet);
 
         done();
       });
+
     });
   });
 
