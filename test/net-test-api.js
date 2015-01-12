@@ -3,47 +3,81 @@
 var Abricos = require('../index');
 var should = require('should');
 
-describe('Abricos.API Module Network Functions:', function () {
+describe('Abricos.API', function(){
 
-  describe('User API', function () {
-    it('should send a current user info', function (done) {
-      this.timeout(40000);
+    var userModule;
 
-      var api = new Abricos.API();
-      var userModule = api.getModule('user');
-
-      userModule.userCurrent(function (err, userCurrnet) {
-        should.not.exist(err);
-
-        userCurrnet.should.have.property('id');
-        userCurrnet.should.have.property('username');
-        userCurrnet.should.have.property('permission');
-
-        should.exist(userCurrnet);
+    beforeEach(function(done){
+        var api = new Abricos.API();
+        userModule = api.getModule('user');
 
         done();
-      });
     });
-  });
 
-  describe('User API', function () {
-    it('should admin user authorization', function (done) {
-      this.timeout(40000);
+    describe('User Module', function(){
 
-      var api = new Abricos.API();
-      var userModule = api.getModule('user');
+        it('Guest user info', function(done){
+            userModule.userCurrent(function(err, userCurrnet){
+                should.not.exist(err);
+                should.exist(userCurrnet);
 
-      userModule.auth(function (err, userCurrnet) {
-        should.not.exist(err);
+                userCurrnet.should.have.property('id', 0);
+                userCurrnet.should.have.property('username', 'Guest');
+                userCurrnet.should.have.property('session');
+                userCurrnet.should.have.property('permission');
 
-        userCurrnet.should.have.property('id');
-        userCurrnet.should.have.property('username');
-        userCurrnet.should.have.property('permission');
+                done();
+            });
+        });
 
-        should.exist(userCurrnet);
+        describe('Authorization', function(){
 
-        done();
-      });
+            describe('Authorization errors', function(){
+
+                it('Bad user name, error code 1', function(done){
+                    var authData = {
+                        username: '#)GD*@)a;sdfj asdf;j',
+                        password: 'asdf'
+                    };
+                    userModule.auth(authData, function(err, result){
+                        should.exist(err);
+                        err.should.have.property('code', 1);
+                        should.not.exist(result);
+                        done();
+                    });
+                });
+
+                it('Invalid user name or password, error code 2', function(done){
+                    var authData = {
+                        username: 'user',
+                        password: 'mypassword'
+                    };
+                    userModule.auth(authData, function(err, result){
+                        should.exist(err);
+                        err.should.have.property('code', 2);
+                        should.not.exist(result);
+                        done();
+                    });
+                });
+
+            });
+
+            it('Admin user authorization', function(done){
+
+                var authData = {
+                    username: 'admin',
+                    password: 'admin',
+                    autologin: true
+                };
+
+                userModule.auth(authData, function(err, result){
+                    should.not.exist(err);
+
+                    should.exist(result);
+
+                    done();
+                });
+            });
+        });
     });
-  });
 });
