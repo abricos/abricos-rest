@@ -34,7 +34,7 @@ describe('Abricos.API', function(){
 
             describe('Authorization errors', function(){
 
-                it('Bad user name, error code 1', function(done){
+                it('Error in the username, error code 1', function(done){
                     var authData = {
                         username: '#)GD*@)a;sdfj asdf;j',
                         password: 'asdf'
@@ -59,6 +59,19 @@ describe('Abricos.API', function(){
                         done();
                     });
                 });
+
+                it('Do not fill in the required fields, error code 3', function(done){
+                    var authData = {
+                    };
+                    userModule.auth(authData, function(err, result){
+                        should.exist(err);
+                        err.should.have.property('code', 3);
+                        should.not.exist(result);
+                        done();
+                    });
+                });
+
+                // TODO: test error code 3 and 4
 
             });
 

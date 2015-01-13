@@ -39,7 +39,7 @@
     "gulp-mocha": "^2.0.0",
     "merge": "^1.2.0",
     "request": "^2.51.0",
-    "should": "^4.4.4",
+    "should": "^4.5.0",
     "tree-config": "^0.1.0"
   }
 }
