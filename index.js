@@ -7,7 +7,10 @@
 'use strict';
 
 var API = require('./lib/api');
+var helper = require('./lib/helper');
 
 module.exports.API = function(){
     return new API()
 };
+
+module.exports.helper = helper;
