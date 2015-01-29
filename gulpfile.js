@@ -19,7 +19,7 @@ gulp.task('default', ['test', 'watch']);
 
 gulp.task('test-net', function(){
     return gulp
-        .src(['test/net-test-*.js'])
+        .src(['test/*.js'])
         .pipe(mocha(opts.mocha));
 });
 

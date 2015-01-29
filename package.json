@@ -35,6 +35,7 @@
     "rest"
   ],
   "dependencies": {
+    "cheerio": "^0.18.0",
     "gulp": "^3.8.10",
     "gulp-mocha": "^2.0.0",
     "merge": "^1.2.0",
