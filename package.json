@@ -15,12 +15,7 @@
   "bugs": {
     "url": "https://github.com/abricos/abricos-rest/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/abricos/abricos-rest/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "scripts": {
     "start": "gulp",
     "test": "gulp test"
@@ -28,20 +23,26 @@
   "engines": {
     "node": ">= 0.10.34"
   },
-  "devDependencies": {},
   "keywords": [
     "abricos",
     "api",
     "rest"
   ],
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-coverage": "^0.3.38",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-mocha": "^4.0.1",
+    "gulp-subtree": "^0.1.0",
+    "should": "^11.2.0",
+    "vinyl-paths": "^2.1.0"
+  },
   "dependencies": {
-    "cheerio": "^0.18.0",
-    "gulp": "^3.8.10",
-    "gulp-mocha": "^2.0.0",
-    "merge": "^1.2.0",
-    "request": "^2.51.0",
-    "should": "^4.5.0",
-    "tree-config": "^0.1.0",
-    "tree-config-logger": "^0.1.0"
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0",
+    "smtpeshka": "^1.0.0",
+    "tree-config": "^1.0.0",
+    "tree-config-logger": "^1.0.0"
   }
 }
