@@ -41,7 +41,6 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "request": "^2.79.0",
-    "smtpeshka": "^1.0.0",
     "tree-config": "^1.0.0",
     "tree-config-logger": "^1.0.0"
   }
